@@ -84,6 +84,8 @@ public class Registration extends BaseHttpServlet {
 		ve.init();
 		VelocityContext context = new VelocityContext();
 		Pair<Entity, UserCookie> infoAndCookie = init(context, req);
+		int numLevels = ((String) context.get("levels")).split("\\+").length;
+		context.put("numLevels", numLevels);
 		boolean loggedIn = (boolean) context.get("loggedIn");
 
 		if (loggedIn && !infoAndCookie.y.isAdmin()) {

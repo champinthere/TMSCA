@@ -38,8 +38,6 @@ public class BaseHttpServlet extends HttpServlet {
 		Entity contestInfo = Retrieve.contestInfo();
 		if (contestInfo != null) {
 			context.put("enabledLevels", contestInfo.getProperty("levels"));
-			int numLevels = ((String) contestInfo.getProperty("levels")).split("\\+").length;
-			context.put("numLevels", numLevels);
 			context.put("title", contestInfo.getProperty("title"));
 
 			if (contestInfo.hasProperty("googleAnalytics")) {
